@@ -5,6 +5,13 @@ const myServer  = createServer((req,res)=>{
 
     const {url,method} = req;
     const baseUrl = `http://${req.headers.host}`;
+    const myUrl = new URL(url,baseUrl);
+
+    // Get method
+    if(method === 'GET' && myUrl.pathname === '/api/items'){
+        res.writeHead(200,{'Content-type':'application/json'})
+        res.end(JSON.stringify({message:'Get method ==> Fetching all items'}))
+    }
 
 })
 
