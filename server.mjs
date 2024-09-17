@@ -3,6 +3,9 @@ const PORT = 8000;
 
 const myServer  = createServer((req,res)=>{
 
+    const {url,method} = req;
+    const baseUrl = `http://${req.headers.host}`;
+
 })
 
 
