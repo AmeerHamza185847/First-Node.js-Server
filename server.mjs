@@ -40,8 +40,15 @@ const myServer = createServer((req, res) => {
         req.on('end', () => {
             const updatedItem = JSON.parse(body);
             res.writeHead(200, { 'Content-type': 'application/json' })
-            res.end(JSON.stringify({ message: 'PUT request ==>', Data: updatedItem }))
+            res.end(JSON.stringify({ message: `PUT request: updating item with id ${itemId}`, Data: updatedItem }))
         })
+
+    }
+    // DELETE request
+    else if (method === "DELETE" && myUrl.pathname.startsWith('/api/items/')){
+        const itemID = myUrl.pathname.split('/').pop();
+        res.writeHead(200,{'Content-type':'application/json'});
+        res.end(JSON.stringify({message:`DELETE request: deleting item with id  ${itemID}`}))
 
     }
 
